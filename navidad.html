@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Árbol de Navidad para mi Amor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #0a1628, #1a2845);
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arbol-container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .arbol {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin: auto;
+            filter: drop-shadow(0 10px 30px rgba(11, 102, 35, 0.5));
+        }
+
+        /* Estrella mejorada */
+        .estrella {
+            color: #ffd700;
+            font-size: 60px;
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-shadow: 
+                0 0 20px #ffd700,
+                0 0 40px #ffd700,
+                0 0 60px #ff6b00;
+            animation: brilloEstrella 2s ease-in-out infinite;
+            z-index: 10;
+        }
+
+        @keyframes brilloEstrella {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1) rotate(0deg);
+                text-shadow: 
+                    0 0 20px #ffd700,
+                    0 0 40px #ffd700,
+                    0 0 60px #ff6b00;
+            }
+            50% { 
+                transform: translateX(-50%) scale(1.15) rotate(180deg);
+                text-shadow: 
+                    0 0 30px #ffd700,
+                    0 0 60px #ffd700,
+                    0 0 80px #ff6b00;
+            }
+        }
+
+        /* Capas del árbol con forma más bonita y natural */
+        .capa {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .capa1 {
+            width: 80px;
+            height: 50px;
+            background: linear-gradient(135deg, #0d7a2f 0%, #0b6623 50%, #094a1b 100%);
+            top: 20px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-radius: 10px 10px 40% 40%;
+        }
+
+        .capa2 {
+            width: 120px;
+            height: 60px;
+            background: linear-gradient(135deg, #0f8735 0%, #0d7a2f 50%, #0b6623 100%);
+            top: 55px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-radius: 15px 15px 45% 45%;
+        }
+
+        .capa3 {
+            width: 160px;
+            height: 70px;
+            background: linear-gradient(135deg, #11993a 0%, #0f8735 50%, #0d7a2f 100%);
+            top: 95px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-radius: 20px 20px 50% 50%;
+        }
+
+        .capa4 {
+            width: 200px;
+            height: 80px;
+            background: linear-gradient(135deg, #13a83f 0%, #11993a 50%, #0f8735 100%);
+            top: 140px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-radius: 25px 25px 50% 50%;
+        }
+
+        .capa5 {
+            width: 240px;
+            height: 90px;
+            background: linear-gradient(135deg, #15b845 0%, #13a83f 50%, #11993a 100%);
+            top: 190px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-radius: 30px 30px 50% 50%;
+        }
+
+        .capa6 {
+            width: 280px;
+            height: 100px;
+            background: linear-gradient(135deg, #17c74a 0%, #15b845 50%, #13a83f 100%);
+            top: 250px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            border-radius: 35px 35px 50% 50%;
+        }
+
+        /* Sombras en las capas */
+        .capa::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 20%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+            border-radius: inherit;
+        }
+
+        /* Tronco mejorado */
+        .tronco {
+            position: absolute;
+            width: 60px;
+            height: 70px;
+            background: linear-gradient(to right, #3d2110, #6b3e26, #8b5a3c, #6b3e26, #3d2110);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 8px 8px 15px 15px;
+            box-shadow: 
+                inset -5px 0 10px rgba(0, 0, 0, 0.3),
+                inset 5px 0 10px rgba(139, 90, 60, 0.3),
+                0 5px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Textura de corteza */
+        .tronco::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            width: 60%;
+            height: 3px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+
+        .tronco::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            width: 70%;
+            height: 3px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+        }
+
+        /* Luces del árbol mejoradas */
+        .luz {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            box-shadow: 
+                0 0 15px currentColor,
+                0 0 25px currentColor;
+            animation: parpadeo 1.5s ease-in-out infinite;
+            z-index: 5;
+        }
+
+        .luz::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, white, transparent 70%);
+        }
+
+        .luz:nth-child(odd) {
+            animation-delay: 0.75s;
+        }
+
+        @keyframes parpadeo {
+            0%, 100% { 
+                opacity: 1; 
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% { 
+                opacity: 0.4; 
+                transform: scale(0.85);
+                filter: brightness(0.7);
+            }
+        }
+
+        /* Posiciones de luces distribuidas naturalmente */
+        .luz1 { background: #ff3333; top: 40px; left: 130px; }
+        .luz2 { background: #33ff33; top: 40px; right: 130px; }
+        .luz3 { background: #ffff33; top: 75px; left: 100px; }
+        .luz4 { background: #ff33ff; top: 75px; right: 100px; }
+        .luz5 { background: #33ffff; top: 115px; left: 70px; }
+        .luz6 { background: #ff6633; top: 115px; right: 70px; }
+        .luz7 { background: #ff3399; top: 160px; left: 45px; }
+        .luz8 { background: #33ff99; top: 160px; right: 45px; }
+        .luz9 { background: #9933ff; top: 210px; left: 25px; }
+        .luz10 { background: #ff9933; top: 210px; right: 25px; }
+        .luz11 { background: #3399ff; top: 270px; left: 35px; }
+        .luz12 { background: #ff3366; top: 270px; right: 35px; }
+        .luz13 { background: #66ff33; top: 230px; left: 90px; }
+        .luz14 { background: #ffff66; top: 230px; right: 90px; }
+
+        /* Decoraciones - bolas navideñas */
+        .bola {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 
+                inset -3px -3px 8px rgba(0, 0, 0, 0.3),
+                inset 3px 3px 8px rgba(255, 255, 255, 0.4),
+                0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: balanceo 3s ease-in-out infinite;
+        }
+
+        @keyframes balanceo {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .bola1 { background: linear-gradient(135deg, #ff0000, #cc0000); top: 60px; left: 115px; animation-delay: 0s; }
+        .bola2 { background: linear-gradient(135deg, #ffd700, #ffaa00); top: 60px; right: 115px; animation-delay: 0.5s; }
+        .bola3 { background: linear-gradient(135deg, #0088ff, #0055cc); top: 130px; left: 80px; animation-delay: 1s; }
+        .bola4 { background: linear-gradient(135deg, #ff00ff, #cc00cc); top: 130px; right: 80px; animation-delay: 1.5s; }
+        .bola5 { background: linear-gradient(135deg, #00ff88, #00cc66); top: 200px; left: 50px; animation-delay: 2s; }
+        .bola6 { background: linear-gradient(135deg, #ff6600, #cc4400); top: 200px; right: 50px; animation-delay: 2.5s; }
+
+        /* Mensaje romántico mejorado */
+        .mensaje {
+            color: #fff;
+            font-size: 32px;
+            font-family: 'Georgia', serif;
+            margin-top: 30px;
+            text-shadow: 
+                0 0 10px rgba(255, 0, 100, 0.8),
+                0 0 20px rgba(255, 0, 100, 0.5),
+                2px 2px 5px rgba(0, 0, 0, 0.7);
+            animation: latidoMensaje 2s ease-in-out infinite;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+
+        @keyframes latidoMensaje {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Corazones flotantes */
+        .corazon {
+            position: absolute;
+            font-size: 24px;
+            animation: flotar 4s ease-in-out infinite;
+            opacity: 0;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        .corazon:nth-child(1) {
+            left: -50px;
+            top: 100px;
+            animation-delay: 0s;
+            color: #ff0066;
+        }
+
+        .corazon:nth-child(2) {
+            right: -50px;
+            top: 150px;
+            animation-delay: 1s;
+            color: #ff3399;
+        }
+
+        .corazon:nth-child(3) {
+            left: -40px;
+            top: 220px;
+            animation-delay: 2s;
+            color: #ff66cc;
+        }
+
+        .corazon:nth-child(4) {
+            right: -40px;
+            top: 280px;
+            animation-delay: 3s;
+            color: #ff0099;
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(0) translateX(0) scale(0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-120px) translateX(30px) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Nieve de fondo */
+        .nieve {
+            position: fixed;
+            top: -10px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .copo {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 20px;
+            animation: caerNieve linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes caerNieve {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        /* Brillo sutil en todo el árbol */
+        .arbol::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.1), transparent 60%);
+            pointer-events: none;
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <!-- Árbol de Navidad -->
+    <div class="arbol-container">
+        <div class="arbol">
+            <div class="estrella">★</div>
+            
+            <!-- Capas del árbol -->
+            <div class="capa capa1"></div>
+            <div class="capa capa2"></div>
+            <div class="capa capa3"></div>
+            <div class="capa capa4"></div>
+            <div class="capa capa5"></div>
+            <div class="capa capa6"></div>
+            
+            <!-- Luces decorativas -->
+            <div class="luz luz1"></div>
+            <div class="luz luz2"></div>
+            <div class="luz luz3"></div>
+            <div class="luz luz4"></div>
+            <div class="luz luz5"></div>
+            <div class="luz luz6"></div>
+            <div class="luz luz7"></div>
+            <div class="luz luz8"></div>
+            <div class="luz luz9"></div>
+            <div class="luz luz10"></div>
+            <div class="luz luz11"></div>
+            <div class="luz luz12"></div>
+            <div class="luz luz13"></div>
+            <div class="luz luz14"></div>
+            
+            <!-- Bolas decorativas -->
+            <div class="bola bola1"></div>
+            <div class="bola bola2"></div>
+            <div class="bola bola3"></div>
+            <div class="bola bola4"></div>
+            <div class="bola bola5"></div>
+            <div class="bola bola6"></div>
+            
+            <!-- Corazones flotantes -->
+            <div class="corazon">❤️</div>
+            <div class="corazon">💕</div>
+            <div class="corazon">💖</div>
+            <div class="corazon">❤️</div>
+            
+            <div class="tronco"></div>
+        </div>
+        <div class="mensaje">Para ti, mi amor ❤️</div>
+    </div>
+
+    <!-- Nieve cayendo -->
+    <div class="nieve" id="nieve"></div>
+
+    <script>
+        // Generar copos de nieve
+        const nieveContainer = document.getElementById('nieve');
+        for (let i = 0; i < 50; i++) {
+            const copo = document.createElement('div');
+            copo.className = 'copo';
+            copo.textContent = '❄';
+            copo.style.left = Math.random() * 100 + '%';
+            copo.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            copo.style.animationDelay = Math.random() * 5 + 's';
+            copo.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            nieveContainer.appendChild(copo);
+        }
+    </script>
+</body>
+</html>

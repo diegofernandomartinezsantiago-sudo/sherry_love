@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestras Ocasiones Especiales 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradienteAnimado 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Georgia', serif;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradienteAnimado {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Partículas flotantes */
+        .particula {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: flotar 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(50px);
+                opacity: 0;
+            }
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Título principal */
+        .titulo-principal {
+            font-size: 56px;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.5),
+                0 0 40px rgba(255, 255, 255, 0.3),
+                3px 3px 8px rgba(0, 0, 0, 0.3);
+            animation: aparecerTitulo 1.5s ease-out;
+            font-weight: bold;
+        }
+
+        @keyframes aparecerTitulo {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitulo {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 60px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-style: italic;
+            animation: aparecerTitulo 2s ease-out;
+        }
+
+        /* Grid de tarjetas */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        /* Tarjeta individual */
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.3),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: aparecerCard 1s ease-out backwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.3s; }
+        .card:nth-child(2) { animation-delay: 0.6s; }
+        .card:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes aparecerCard {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.4),
+                inset 0 0 40px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Icono de la tarjeta */
+        .card-icon {
+            font-size: 72px;
+            margin-bottom: 20px;
+            display: block;
+            animation: floatIcon 3s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+        }
+
+        @keyframes floatIcon {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .card:hover .card-icon {
+            animation: rotateIcon 0.6s ease-in-out;
+        }
+
+        @keyframes rotateIcon {
+            0%, 100% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(15deg) scale(1.2);
+            }
+        }
+
+        /* Título de la tarjeta */
+        .card-title {
+            font-size: 32px;
+            color: white;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Descripción de la tarjeta */
+        .card-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Botón de la tarjeta */
+        .card-button {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-button:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+            border-color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Corazones flotantes */
+        .corazon {
+            position: fixed;
+            font-size: 24px;
+            animation: floatHeart 10s ease-in-out infinite;
+            opacity: 0;
+            pointer-events: none;
+            filter: drop-shadow(0 0 8px currentColor);
+        }
+
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .titulo-principal {
+                font-size: 38px;
+            }
+
+            .subtitulo {
+                font-size: 18px;
+                margin-bottom: 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .card {
+                padding: 35px 25px;
+            }
+
+            .card-icon {
+                font-size: 56px;
+            }
+
+            .card-title {
+                font-size: 26px;
+            }
+
+            .card-description {
+                font-size: 16px;
+            }
+
+            .card-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titulo-principal {
+                font-size: 32px;
+            }
+
+            .subtitulo {
+                font-size: 16px;
+            }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            .card-icon {
+                font-size: 48px;
+            }
+
+            .card-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas flotantes -->
+    <div id="particulas"></div>
+
+    <!-- Corazones flotantes -->
+    <div id="corazones"></div>
+
+    <div class="container">
+        <h1 class="titulo-principal">✨ Ocasiones Especiales ✨</h1>
+        <p class="subtitulo">Momentos inolvidables guardados con amor 💕</p>
+
+        <div class="cards-grid">
+            <!-- Tarjeta Navidad -->
+            <div class="card">
+                <span class="card-icon">🎄</span>
+                <h2 class="card-title">Navidad</h2>
+                <p class="card-description">Una época mágica llena de amor, regalos y momentos especiales juntos</p>
+                <a href="navidad.html" class="card-button">Ver Página ✨</a>
+            </div>
+
+            <!-- Tarjeta Cumpleaños -->
+            <div class="card">
+                <span class="card-icon">🎂</span>
+                <h2 class="card-title">Cumpleaños</h2>
+                <p class="card-description">Celebrando tu día especial con todo mi amor y las flores más hermosas</p>
+                <a href="flor.html" class="card-button">Ver Página 💜</a>
+            </div>
+
+            <!-- Tarjeta Aniversario -->
+            <div class="card">
+                <span class="card-icon">💕</span>
+                <h2 class="card-title">Aniversario</h2>
+                <p class="card-description">Un año completo de amor, risas y momentos que atesoraremos por siempre</p>
+                <a href="aniversario.html" class="card-button">Ver Página 💖</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generar partículas flotantes
+        const particulasContainer = document.getElementById('particulas');
+        for (let i = 0; i < 40; i++) {
+            const particula = document.createElement('div');
+            particula.className = 'particula';
+            particula.style.left = Math.random() * 100 + '%';
+            particula.style.bottom = '-10px';
+            particula.style.animationDelay = Math.random() * 8 + 's';
+            particula.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            particulasContainer.appendChild(particula);
+        }
+
+        // Generar corazones flotantes
+        const corazonesContainer = document.getElementById('corazones');
+        const corazones = ['💕', '💖', '💗', '💝', '💘', '❤️', '🌟', '✨'];
+        
+        for (let i = 0; i < 20; i++) {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon';
+            corazon.textContent = corazones[Math.floor(Math.random() * corazones.length)];
+            corazon.style.left = Math.random() * 100 + '%';
+            corazon.style.animationDelay = Math.random() * 10 + 's';
+            corazon.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            corazonesContainer.appendChild(corazon);
+        }
+
+        // Efecto de sonido al hacer hover (opcional)
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.animationPlayState = 'paused';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.animationPlayState = 'running';
+            });
+        });
+    </script>
+</body>
+</html>

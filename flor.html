@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Cumpleaños Mi Amor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 20%, #e9d5ff 40%, #ddd6fe 60%, #e9d5ff 80%, #faf5ff 100%);
+            background-size: 400% 400%;
+            animation: gradienteAnimado 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradienteAnimado {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Partículas brillantes de fondo */
+        .particula {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(200, 162, 255, 0.8), transparent);
+            border-radius: 50%;
+            animation: brillar 3s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes brillar {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Burbujas flotantes más elegantes */
+        .burbuja {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), rgba(220, 190, 255, 0.3));
+            border: 2px solid rgba(200, 162, 255, 0.2);
+            animation: flotar 20s ease-in-out infinite;
+            z-index: 0;
+            backdrop-filter: blur(2px);
+        }
+
+        @keyframes flotar {
+            0%, 100% {
+                transform: translateY(0) translateX(0) scale(1);
+            }
+            25% {
+                transform: translateY(-40px) translateX(30px) scale(1.1);
+            }
+            50% {
+                transform: translateY(-80px) translateX(-30px) scale(0.9);
+            }
+            75% {
+                transform: translateY(-40px) translateX(30px) scale(1.05);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 40px;
+            max-width: 1100px;
+        }
+
+        /* Título principal con efecto mágico */
+        .titulo {
+            font-size: 72px;
+            background: linear-gradient(135deg, #9333ea, #c084fc, #e879f9, #c084fc, #9333ea);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradienteTexto 4s ease infinite, aparecer 1.5s ease-out;
+            margin-bottom: 15px;
+            font-style: italic;
+            letter-spacing: 4px;
+            filter: drop-shadow(0 0 30px rgba(147, 51, 234, 0.3));
+            font-weight: bold;
+        }
+
+        @keyframes gradienteTexto {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Decoración alrededor del título */
+        .titulo-decoracion {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .titulo-decoracion::before,
+        .titulo-decoracion::after {
+            content: '✨';
+            position: absolute;
+            font-size: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: girarBrillo 4s ease-in-out infinite;
+        }
+
+        .titulo-decoracion::before {
+            left: -70px;
+        }
+
+        .titulo-decoracion::after {
+            right: -70px;
+            animation-delay: 2s;
+        }
+
+        @keyframes girarBrillo {
+            0%, 100% { 
+                transform: translateY(-50%) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            50% { 
+                transform: translateY(-50%) rotate(180deg) scale(1.3);
+                opacity: 0.7;
+            }
+        }
+
+        /* Subtítulo elegante */
+        .subtitulo {
+            font-size: 38px;
+            color: #a855f7;
+            margin-bottom: 50px;
+            animation: aparecer 2s ease-out;
+            text-shadow: 
+                0 0 20px rgba(168, 85, 247, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        /* Contenedor de hortensias */
+        .jardin {
+            position: relative;
+            margin: 60px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 80px;
+            flex-wrap: wrap;
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(250, 245, 255, 0.7));
+            border-radius: 40px;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 25px 70px rgba(147, 51, 234, 0.25),
+                inset 0 0 50px rgba(255, 255, 255, 0.6);
+            border: 3px solid rgba(192, 132, 252, 0.4);
+            animation: aparecer 2.5s ease-out;
+        }
+
+        /* Hortensia con imagen real */
+        .hortensia {
+            position: relative;
+            animation: crecer 2.5s ease-out;
+            filter: drop-shadow(0 15px 35px rgba(147, 51, 234, 0.4));
+        }
+
+        @keyframes crecer {
+            from {
+                transform: scale(0) translateY(50px) rotate(-10deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Contenedor de la imagen de flores */
+        .flores-img {
+            width: 220px;
+            height: 220px;
+            position: relative;
+            animation: flotarSuave 5s ease-in-out infinite;
+        }
+
+        @keyframes flotarSuave {
+            0%, 100% {
+                transform: translateY(0px) scale(1);
+            }
+            50% {
+                transform: translateY(-15px) scale(1.03);
+            }
+        }
+
+        .flores-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 25px rgba(192, 132, 252, 0.6));
+            animation: brilloFlor 4s ease-in-out infinite;
+        }
+
+        @keyframes brilloFlor {
+            0%, 100% {
+                filter: drop-shadow(0 0 25px rgba(192, 132, 252, 0.6)) brightness(1);
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(192, 132, 252, 0.8)) brightness(1.1);
+            }
+        }
+
+        /* Brillo alrededor de las flores */
+        .flores-img::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(192, 132, 252, 0.4), transparent 70%);
+            animation: pulsarBrillo 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulsarBrillo {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.4;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.8;
+            }
+        }
+
+        /* Mensaje especial más elaborado */
+        .mensaje {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(250, 245, 255, 0.9));
+            backdrop-filter: blur(15px);
+            padding: 45px 55px;
+            border-radius: 30px;
+            margin: 70px auto;
+            max-width: 700px;
+            box-shadow: 
+                0 20px 60px rgba(147, 51, 234, 0.3),
+                inset 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: aparecer 3s ease-out;
+            border: 3px solid rgba(192, 132, 252, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mensaje::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(192, 132, 252, 0.1), transparent);
+            animation: brilloMensaje 3s linear infinite;
+        }
+
+        @keyframes brilloMensaje {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .mensaje p {
+            font-size: 24px;
+            color: #7c3aed;
+            line-height: 2;
+            margin: 18px 0;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 2px rgba(124, 58, 237, 0.1);
+        }
+
+        .mensaje p strong {
+            font-size: 28px;
+            color: #9333ea;
+            text-shadow: 0 0 10px rgba(147, 51, 234, 0.3);
+        }
+
+        /* Corazones flotantes mejorados */
+        .corazon-flotante {
+            position: fixed;
+            font-size: 35px;
+            animation: flotar-corazon 10s ease-in-out infinite;
+            opacity: 0;
+            z-index: 0;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
+
+        @keyframes flotar-corazon {
+            0% {
+                transform: translateY(100vh) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-150px) scale(1.8) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Confeti mejorado */
+        .confeti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            top: -20px;
+            animation: caer-confeti 6s linear infinite;
+            z-index: 0;
+            border-radius: 2px;
+        }
+
+        @keyframes caer-confeti {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
+        /* Mariposas más elegantes */
+        .mariposa {
+            position: fixed;
+            font-size: 40px;
+            animation: volar 20s ease-in-out infinite;
+            z-index: 0;
+            filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.7));
+        }
+
+        @keyframes volar {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translate(250px, -120px) rotate(25deg) scale(1.1);
+            }
+            50% {
+                transform: translate(500px, -80px) rotate(-25deg) scale(0.9);
+            }
+            75% {
+                transform: translate(250px, -180px) rotate(25deg) scale(1.05);
+            }
+        }
+
+        /* Botón de sorpresa premium */
+        .boton-sorpresa {
+            margin-top: 50px;
+            padding: 22px 55px;
+            font-size: 26px;
+            background: linear-gradient(135deg, #c084fc, #a855f7, #9333ea);
+            color: white;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 
+                0 10px 30px rgba(147, 51, 234, 0.5),
+                inset 0 2px 10px rgba(255, 255, 255, 0.3);
+            transition: all 0.4s ease;
+            font-family: 'Georgia', serif;
+            font-weight: bold;
+            letter-spacing: 3px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .boton-sorpresa::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .boton-sorpresa:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .boton-sorpresa:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 15px 40px rgba(147, 51, 234, 0.7),
+                inset 0 2px 10px rgba(255, 255, 255, 0.4);
+        }
+
+        .boton-sorpresa:active {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* Modal de sorpresa mejorado */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #faf5ff, #f3e8ff, #e9d5ff);
+            padding: 60px 70px;
+            border-radius: 40px;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.7),
+                inset 0 0 50px rgba(255, 255, 255, 0.5);
+            animation: aparecer 0.6s ease-out;
+            border: 4px solid rgba(192, 132, 252, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #c084fc, #a855f7, #9333ea, #a855f7);
+            background-size: 400% 400%;
+            animation: bordeAnimado 3s ease infinite;
+            border-radius: 40px;
+            z-index: -1;
+        }
+
+        @keyframes bordeAnimado {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .modal-content h2 {
+            font-size: 52px;
+            background: linear-gradient(135deg, #9333ea, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .modal-content p {
+            font-size: 26px;
+            color: #7c3aed;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .cerrar-modal {
+            margin-top: 40px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #a855f7, #9333ea);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(147, 51, 234, 0.4);
+            font-weight: bold;
+        }
+
+        .cerrar-modal:hover {
+            background: linear-gradient(135deg, #c084fc, #a855f7);
+            transform: scale(1.1);
+            box-shadow: 0 12px 30px rgba(147, 51, 234, 0.6);
+        }
+
+
+
+
+
+
+                /* Responsive Design */
+                @media (max-width: 768px) {
+            .titulo {
+                font-size: 42px;
+                letter-spacing: 2px;
+            }
+
+            .titulo-decoracion::before,
+            .titulo-decoracion::after {
+                font-size: 24px;
+            }
+
+            .titulo-decoracion::before {
+                left: -40px;
+            }
+
+            .titulo-decoracion::after {
+                right: -40px;
+            }
+
+            .subtitulo {
+                font-size: 24px;
+                letter-spacing: 1px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .jardin {
+                gap: 40px;
+                padding: 30px 20px;
+                margin: 40px auto;
+            }
+
+            .flores-img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .mensaje {
+                padding: 30px 25px;
+                margin: 40px auto;
+                max-width: 90%;
+            }
+
+            .mensaje p {
+                font-size: 18px;
+                line-height: 1.8;
+                margin: 12px 0;
+            }
+
+            .mensaje p strong {
+                font-size: 20px;
+            }
+
+            .boton-sorpresa {
+                padding: 18px 40px;
+                font-size: 20px;
+                letter-spacing: 2px;
+                margin-top: 30px;
+            }
+
+            .modal-content {
+                padding: 40px 30px;
+                max-width: 90%;
+                margin: 20px;
+            }
+
+            .modal-content h2 {
+                font-size: 36px;
+            }
+
+            .modal-content p {
+                font-size: 20px;
+            }
+
+            .cerrar-modal {
+                padding: 14px 30px;
+                font-size: 18px;
+            }
+
+            .mariposa {
+                font-size: 28px;
+            }
+
+            .burbuja {
+                width: 60px !important;
+                height: 60px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titulo {
+                font-size: 32px;
+                letter-spacing: 1px;
+            }
+
+            .titulo-decoracion::before,
+            .titulo-decoracion::after {
+                font-size: 20px;
+            }
+
+            .titulo-decoracion::before {
+                left: -30px;
+            }
+
+            .titulo-decoracion::after {
+                right: -30px;
+            }
+
+            .subtitulo {
+                font-size: 20px;
+            }
+
+            .jardin {
+                gap: 30px;
+                padding: 20px 15px;
+            }
+
+            .flores-img {
+                width: 110px;
+                height: 110px;
+            }
+
+            .mensaje {
+                padding: 25px 20px;
+            }
+
+            .mensaje p {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .mensaje p strong {
+                font-size: 18px;
+            }
+
+            .boton-sorpresa {
+                padding: 16px 35px;
+                font-size: 18px;
+                letter-spacing: 1px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .modal-content h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .modal-content p {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+
+            .cerrar-modal {
+                padding: 12px 25px;
+                font-size: 16px;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas brillantes -->
+    <div id="particulas"></div>
+
+    <!-- Burbujas de fondo -->
+    <div class="burbuja" style="width: 100px; height: 100px; top: 8%; left: 8%; animation-delay: 0s;"></div>
+    <div class="burbuja" style="width: 80px; height: 80px; top: 18%; right: 12%; animation-delay: 3s;"></div>
+    <div class="burbuja" style="width: 120px; height: 120px; bottom: 12%; left: 15%; animation-delay: 6s;"></div>
+    <div class="burbuja" style="width: 90px; height: 90px; bottom: 22%; right: 8%; animation-delay: 9s;"></div>
+    <div class="burbuja" style="width: 70px; height: 70px; top: 50%; left: 5%; animation-delay: 12s;"></div>
+
+    <!-- Mariposas -->
+    <div class="mariposa" style="top: 12%; left: 3%; animation-delay: 0s;">🦋</div>
+    <div class="mariposa" style="top: 22%; right: 8%; animation-delay: 5s;">🦋</div>
+    <div class="mariposa" style="bottom: 18%; left: 12%; animation-delay: 10s;">🦋</div>
+    <div class="mariposa" style="top: 60%; right: 5%; animation-delay: 15s;">🦋</div>
+
+    <div class="container">
+        <div class="titulo-decoracion">
+            <h1 class="titulo">Feliz Cumpleaños</h1>
+        </div>
+        <p class="subtitulo">Mi Amor Hermoso 💜</p>
+
+        <!-- Jardín de hortensias -->
+        <div class="jardin">
+            <!-- Hortensia 1 -->
+            <div class="hortensia" style="animation-delay: 0s;">
+                <div class="flores-img">
+                    <img src="flor.png" alt="Hortensia" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2290%22 fill=%22%23c084fc%22/%3E%3Ccircle cx=%22100%22 cy=%2260%22 r=%2220%22 fill=%22%23a855f7%22/%3E%3Ccircle cx=%22140%22 cy=%22100%22 r=%2220%22 fill=%22%23d8b4fe%22/%3E%3Ccircle cx=%22100%22 cy=%22140%22 r=%2220%22 fill=%22%239333ea%22/%3E%3Ccircle cx=%2260%22 cy=%22100%22 r=%2220%22 fill=%22%23c084fc%22/%3E%3C/svg%3E'">
+                </div>
+            </div>
+
+            <!-- Hortensia 2 -->
+            <div class="hortensia" style="animation-delay: 0.8s;">
+                <div class="flores-img">
+                    <img src="flor.png" alt="Hortensia" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2290%22 fill=%22%23c084fc%22/%3E%3Ccircle cx=%22100%22 cy=%2260%22 r=%2220%22 fill=%22%23a855f7%22/%3E%3Ccircle cx=%22140%22 cy=%22100%22 r=%2220%22 fill=%22%23d8b4fe%22/%3E%3Ccircle cx=%22100%22 cy=%22140%22 r=%2220%22 fill=%22%239333ea%22/%3E%3Ccircle cx=%2260%22 cy=%22100%22 r=%2220%22 fill=%22%23c084fc%22/%3E%3C/svg%3E'">
+                </div>
+            </div>
+
+            <!-- Hortensia 3 -->
+            <div class="hortensia" style="animation-delay: 1.6s;">
+                <div class="flores-img">
+                    <img src="flor.png" alt="Hortensia" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2290%22 fill=%22%23c084fc%22/%3E%3Ccircle cx=%22100%22 cy=%2260%22 r=%2220%22 fill=%22%23a855f7%22/%3E%3Ccircle cx=%22140%22 cy=%22100%22 r=%2220%22 fill=%22%23d8b4fe%22/%3E%3Ccircle cx=%22100%22 cy=%22140%22 r=%2220%22 fill=%22%239333ea%22/%3E%3Ccircle cx=%2260%22 cy=%22100%22 r=%2220%22 fill=%22%23c084fc%22/%3E%3C/svg%3E'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Mensaje especial -->
+        <div class="mensaje">
+            <p>✨ En tu día especial quiero que sepas... ✨</p>
+            <p>Que eres la persona más increíble que conozco 💜</p>
+            <p>Que cada día a tu lado es un regalo ✨</p>
+            <p>Y que te amo más de lo que las palabras pueden expresar 💕</p>
+            <p><strong>¡Feliz cumpleaños, mi amor!</strong> 🎂</p>
+        </div>
+
+        <button class="boton-sorpresa" onclick="mostrarSorpresa()">
+            Haz clic aquí 🎁
+        </button>
+    </div>
+
+    <!-- Modal de sorpresa -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>🎉 ¡Sorpresa! 🎉</h2>
+            <p>Eres la luz de mi vida,<br>mi razón de sonreír cada día.<br><br>
+            Te amo hoy, mañana y siempre 💜✨<br><br>
+            <strong>Eres mi todo</strong> 💕</p>
+            <button class="cerrar-modal" onclick="cerrarModal()">💕 Gracias mi amor 💕</button>
+        </div>
+    </div>
+
+    <!-- Corazones flotantes -->
+    <div id="corazones"></div>
+
+    <!-- Confeti -->
+    <div id="confeti"></div>
+
+    <script>
+        // Generar partículas brillantes
+        const particulasContainer = document.getElementById('particulas');
+        for (let i = 0; i < 30; i++) {
+            const particula = document.createElement('div');
+            particula.className = 'particula';
+            particula.style.left = Math.random() * 100 + '%';
+            particula.style.top = Math.random() * 100 + '%';
+            particula.style.animationDelay = Math.random() * 3 + 's';
+            particulasContainer.appendChild(particula);
+        }
+
+        // Generar corazones flotantes
+        const corazonesContainer = document.getElementById('corazones');
+        const corazones = ['💜', '💕', '💖', '💗', '💝', '💘', '🌸', '🦋'];
+        
+        for (let i = 0; i < 20; i++) {
+            const corazon = document.createElement('div');
+            corazon.className = 'corazon-flotante';
+            corazon.textContent = corazones[Math.floor(Math.random() * corazones.length)];
+            corazon.style.left = Math.random() * 100 + '%';
+            corazon.style.animationDelay = Math.random() * 10 + 's';
+            corazon.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            corazonesContainer.appendChild(corazon);
+        }
+
+        // Generar confeti
+        const confetiContainer = document.getElementById('confeti');
+        const colores = ['#c084fc', '#a855f7', '#d8b4fe', '#f5d5e8', '#e9d5ff', '#9333ea', '#fae8ff'];
+        
+        for (let i = 0; i < 80; i++) {
+            const confeti = document.createElement('div');
+            confeti.className = 'confeti';
+            confeti.style.left = Math.random() * 100 + '%';
+            confeti.style.background = colores[Math.floor(Math.random() * colores.length)];
+            confeti.style.animationDelay = Math.random() * 6 + 's';
+            confeti.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            confeti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+            confeti.style.width = (Math.random() * 8 + 8) + 'px';
+            confeti.style.height = (Math.random() * 8 + 8) + 'px';
+            confetiContainer.appendChild(confeti);
+        }
+
+        // Funciones del modal
+        function mostrarSorpresa() {
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
